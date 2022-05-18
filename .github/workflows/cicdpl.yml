@@ -23,10 +23,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-run: |
-   npm: docker login --username myusername --password mypassword
-   npm: docker login -u myusername -p mypassword
-   npm: echo mypassword | docker login -u myusername --password-stdin
+# run: |
+#    npm: docker login --username myusername --password mypassword
+#    npm: docker login -u myusername -p mypassword
+#    npm: echo mypassword | docker login -u myusername --password-stdin
 
       - name: Login to Docker Hub
         uses: docker/login-action@v1
