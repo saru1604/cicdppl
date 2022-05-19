@@ -43,11 +43,12 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          file: ./Dockerfile
+          file: ./https://www.docker.com/products/docker-desktop
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: toanbk21096/go-github-actions:latest
-          cache-from: type=registry,ref=toanbk21096/go-github-actions:latest
+#           tags: toanbk21096/go-github-actions:latest
+          tags: saru90/go-github-actions:latest
+          cache-from: type=registry,ref=saru90/go-github-actions:latest
           cache-to: type=inline
 
       - name: Deploy Image
@@ -75,7 +76,8 @@ jobs:
             docker run -d --rm --name go-container -p 8081:8081 toanbk21096/go-github-actions
       # Send slack alert after done pipeline
       - name: Send slack notification
-        uses: 8398a7/action-slack@v3
+#         uses: 8398a7/action-slack@v3
+        uses: saru1604/action-slack@v3
         with:
           status: custom
           fields: workflow,job,commit,repo,ref,author,took
